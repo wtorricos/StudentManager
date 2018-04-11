@@ -42,7 +42,7 @@ namespace StudentManagerBackEnd.Test.Domain.Students
             } catch(InvalidOperationException e) {
                 Assert.NotNull(e);
             } catch(Exception e) {
-                Assert.False(true, "invalid operation exception expected");
+                Assert.False(true, "invalid operation exception expected got" + e.Message);
             }
 
         }
@@ -63,7 +63,7 @@ namespace StudentManagerBackEnd.Test.Domain.Students
             }
             catch (Exception e)
             {
-                Assert.False(true, "invalid operation exception expected");
+                Assert.False(true, "invalid operation exception expected got" + e.Message);
             }
         }
 
@@ -83,7 +83,7 @@ namespace StudentManagerBackEnd.Test.Domain.Students
             }
             catch (Exception e)
             {
-                Assert.False(true, "invalid operation exception expected");
+                Assert.False(true, "invalid operation exception expected got" + e.Message);
             }
         }
     }

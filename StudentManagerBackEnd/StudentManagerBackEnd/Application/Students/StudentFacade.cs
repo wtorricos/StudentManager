@@ -27,5 +27,9 @@ namespace StudentManagerBackEnd.Application.Students
                 .ToList()
                 .ForEach(student => this.studentRepository.Create(student));
         }
+
+        public PaginatedResult<Student> Search(QueryParameters queryParameters) {
+            return this.studentRepository.Get(queryParameters);
+        }
     }
 }
