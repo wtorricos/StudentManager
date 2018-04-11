@@ -4,9 +4,9 @@ namespace StudentManagerBackEnd.Domain.Students
     //TODO: Consider creating an Enumerator base class
     public sealed class StudentType
     {
-        public static readonly string KINDER = "kinder";
-        public static readonly string ELEMENTARY = "elementary";
-        public static readonly string HIGH = "high";
-        public static readonly string UNIVERSITY = "university";
+        public static readonly string KINDER = "Kinder";
+        public static readonly string ELEMENTARY = "Elementary";
+        public static readonly string HIGH = "High";
+        public static readonly string UNIVERSITY = "University";
     }
 }
