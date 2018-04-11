@@ -39,7 +39,4 @@ The “Timestamp” format is: “<year><month><day><hour><minute><second>”, e
 The representation for December 31st, 2013 14:59:34 is 20131231145934.
 
 #TODO
-  * Add more tests
-    * add more test to check that all the criteria defined as requirement is working.
-    * consider csv files with a great amount of data.
   * Handle requests asynchronously.

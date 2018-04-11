@@ -131,11 +131,11 @@ namespace StudentManagerBackEnd.Test.DataAccess.InMemoryRepository
                 page: 1,
                 size: 3,
                 sortingFields: new List<string> { "birth" },
-                filteringFields: new List<KeyValuePair<String, String>> { new KeyValuePair<string, string>("studentType", StudentType.ELEMENTARY ) }));
+                filteringFields: new List<KeyValuePair<String, String>> { new KeyValuePair<string, string>("type", StudentType.ELEMENTARY ) }));
 
             var actualArray = result.ToArray();
-            Assert.Equal("JhonC", actualArray[0].Name);
-            Assert.Equal("JhonE", actualArray[1].Name);
+            Assert.Equal("JhonE", actualArray[0].Name);
+            Assert.Equal("JhonC", actualArray[1].Name);
             Assert.Equal(2, result.Count());
             Assert.Equal(2, result.Total);
             Assert.Equal(1, result.Page);
@@ -157,13 +157,13 @@ namespace StudentManagerBackEnd.Test.DataAccess.InMemoryRepository
                 sortingFields: new List<string> { "birth" },
                 filteringFields: new List<KeyValuePair<String, String>> 
                 { 
-                    new KeyValuePair<string, string>("studentType", StudentType.ELEMENTARY),
+                    new KeyValuePair<string, string>("type", StudentType.ELEMENTARY),
                     new KeyValuePair<string, string>("gender", Gender.FEMALE)
                 }));
 
             var actualArray = result.ToArray();
-            Assert.Equal("MariaB", actualArray[0].Name);
-            Assert.Equal("MariaC", actualArray[1].Name);
+            Assert.Equal("MariaC", actualArray[0].Name);
+            Assert.Equal("MariaB", actualArray[1].Name);
             Assert.Equal(2, result.Count());
             Assert.Equal(2, result.Total);
             Assert.Equal(1, result.Page);

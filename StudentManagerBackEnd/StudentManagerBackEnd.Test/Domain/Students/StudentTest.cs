@@ -8,12 +8,19 @@ namespace StudentManagerBackEnd.Test.Domain.Students
     public class StudentTest
     {
         [Theory]
-        [InlineData("Kinder", "Leia", "F", "20151231145934")]
+        [InlineData("Kinder", "Leia", "F", "20151231145934", 2015, 12, 31, 14, 59, 34)]
+        [InlineData("Kinder", "A0", "F", "20180411190725", 2018,  4, 11, 19,  7, 25)]
         public void DataConstructorWithCorrectDataInitializesTheFieldsCorrectly(
             string type, 
             string name, 
             string gender, 
-            string birth) 
+            string birth,
+            int expectedYear,
+            int expectedMonth,
+            int expectedDay,
+            int expectedHour,
+            int expectedMinute,
+            int expectedSecond) 
         {
             var data = new List<string> { type, name, gender,  birth };
 
@@ -22,12 +29,12 @@ namespace StudentManagerBackEnd.Test.Domain.Students
             Assert.Equal(StudentType.KINDER, actual.Type);
             Assert.Equal(name, actual.Name);
             Assert.Equal(Gender.FEMALE, actual.Gender);
-            Assert.Equal(2015, actual.Birth.Year);
-            Assert.Equal(12, actual.Birth.Month);
-            Assert.Equal(31, actual.Birth.Day);
-            Assert.Equal(14, actual.Birth.Hour);
-            Assert.Equal(59, actual.Birth.Minute);
-            Assert.Equal(34, actual.Birth.Second);
+            Assert.Equal(expectedYear, actual.Birth.Year);
+            Assert.Equal(expectedMonth, actual.Birth.Month);
+            Assert.Equal(expectedDay, actual.Birth.Day);
+            Assert.Equal(expectedHour, actual.Birth.Hour);
+            Assert.Equal(expectedMinute, actual.Birth.Minute);
+            Assert.Equal(expectedSecond, actual.Birth.Second);
         }
 
         [Fact]
