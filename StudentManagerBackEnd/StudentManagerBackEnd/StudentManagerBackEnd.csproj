@@ -12,6 +12,8 @@
     <Folder Include="Domain\Students\" />
     <Folder Include="Application\Student\" />
     <Folder Include="DataAccess\InMemoryRepositories\" />
+    <Folder Include="Common\" />
+    <Folder Include="Common\CSV\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Infrastructure.cs" />

@@ -50,7 +50,7 @@ namespace StudentManagerBackEnd.DataAccess.InMemoryRepositories
                 {
                     if (filteringField.Key == "studentType")
                     {
-                        result = result.Where(s => s.StudentType == filteringField.Value);
+                        result = result.Where(s => s.Type == filteringField.Value);
                     }
                     else if (filteringField.Key == "name")
                     {
