@@ -5,8 +5,14 @@ namespace StudentManagerBackEnd.Domain.Students
     {
         public Guid Id { get; set; }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         public short Age { get; set; }
+
+        public string Gender { get; set; }
+
+        public string StudentType { get; set; }
+
+        public DateTime Birth;
     }
 }
