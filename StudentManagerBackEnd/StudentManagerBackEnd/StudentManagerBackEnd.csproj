@@ -10,7 +10,7 @@
     <Folder Include="Domain\" />
     <Folder Include="DataAccess\" />
     <Folder Include="Domain\Students\" />
-    <Folder Include="Application\Student\" />
+    <Folder Include="Application\Students\" />
     <Folder Include="DataAccess\InMemoryRepositories\" />
     <Folder Include="Common\" />
     <Folder Include="Common\CSV\" />

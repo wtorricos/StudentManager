@@ -1,5 +1,7 @@
 ﻿using System;
-using StudentManagerBackEnd.Application.Student;
+using StudentManagerBackEnd.Application.Students;
+using StudentManagerBackEnd.Common.CSV;
+using StudentManagerBackEnd.DataAccess.InMemoryRepositories;
 
 namespace StudentManagerBackEnd.Application
 {
@@ -7,7 +9,9 @@ namespace StudentManagerBackEnd.Application
     {
         public Bootstrap()
         {
-            this.StudentFacade = new StudentFacade(); 
+            this.StudentFacade = new StudentFacade(
+                new CSVDataReader(),
+                new StudentRepository()); 
         }
 
         public StudentFacade StudentFacade { get; }
