@@ -15,8 +15,19 @@
   <ItemGroup>
     <Folder Include="DataAccess\" />
     <Folder Include="DataAccess\InMemoryRepository\" />
+    <Folder Include="CSV\" />
+    <Folder Include="resources\" />
+    <Folder Include="Domain\" />
+    <Folder Include="Domain\Students\" />
+    <Folder Include="Application\" />
+    <Folder Include="Application\Students\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StudentManagerBackEnd\StudentManagerBackEnd.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="resources\SmallCSVSample.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

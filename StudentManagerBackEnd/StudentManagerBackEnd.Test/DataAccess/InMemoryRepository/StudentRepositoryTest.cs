@@ -121,10 +121,10 @@ namespace StudentManagerBackEnd.Test.DataAccess.InMemoryRepository
         public void GetByStudentTypeSortedByDateReturnsTheCorrectResults()
         {
             var sut = new StudentRepository();
-            sut.Create(new Student { Name = "JhonE", Birth = new DateTime().AddMinutes(5), StudentType = StudentType.ELEMENTARY });
-            sut.Create(new Student { Name = "JhonC", Birth = new DateTime().AddMinutes(3), StudentType = StudentType.ELEMENTARY });
-            sut.Create(new Student { Name = "JhonA", Birth = new DateTime().AddMinutes(1), StudentType = StudentType.HIGH });
-            sut.Create(new Student { Name = "JhonB", Birth = new DateTime().AddMinutes(2), StudentType = StudentType.KINDER });
+            sut.Create(new Student { Name = "JhonE", Birth = new DateTime().AddMinutes(5), Type = StudentType.ELEMENTARY });
+            sut.Create(new Student { Name = "JhonC", Birth = new DateTime().AddMinutes(3), Type = StudentType.ELEMENTARY });
+            sut.Create(new Student { Name = "JhonA", Birth = new DateTime().AddMinutes(1), Type = StudentType.HIGH });
+            sut.Create(new Student { Name = "JhonB", Birth = new DateTime().AddMinutes(2), Type = StudentType.KINDER });
             sut.Create(new Student { Name = "JhonD", Birth = new DateTime().AddMinutes(4) });
 
             var result = sut.Get(new QueryParameters(
@@ -145,10 +145,10 @@ namespace StudentManagerBackEnd.Test.DataAccess.InMemoryRepository
         public void GetByGenderAndTypeSortedByDateReturnsTheCorrectResults()
         {
             var sut = new StudentRepository();
-            sut.Create(new Student { Name = "JhonE", Gender = Gender.MALE, Birth = new DateTime().AddMinutes(5), StudentType = StudentType.ELEMENTARY });
-            sut.Create(new Student { Name = "MariaC", Gender = Gender.FEMALE, Birth = new DateTime().AddMinutes(3), StudentType = StudentType.ELEMENTARY });
-            sut.Create(new Student { Name = "MariaA", Gender = Gender.FEMALE, Birth = new DateTime().AddMinutes(1), StudentType = StudentType.HIGH });
-            sut.Create(new Student { Name = "MariaB", Gender = Gender.FEMALE, Birth = new DateTime().AddMinutes(2), StudentType = StudentType.ELEMENTARY });
+            sut.Create(new Student { Name = "JhonE", Gender = Gender.MALE, Birth = new DateTime().AddMinutes(5), Type = StudentType.ELEMENTARY });
+            sut.Create(new Student { Name = "MariaC", Gender = Gender.FEMALE, Birth = new DateTime().AddMinutes(3), Type = StudentType.ELEMENTARY });
+            sut.Create(new Student { Name = "MariaA", Gender = Gender.FEMALE, Birth = new DateTime().AddMinutes(1), Type = StudentType.HIGH });
+            sut.Create(new Student { Name = "MariaB", Gender = Gender.FEMALE, Birth = new DateTime().AddMinutes(2), Type = StudentType.ELEMENTARY });
             sut.Create(new Student { Name = "JhonD", Gender = Gender.MALE, Birth = new DateTime().AddMinutes(4) });
 
             var result = sut.Get(new QueryParameters(

@@ -1,6 +1,6 @@
 ﻿using System;
 using StudentManagerBackEnd.Application;
-using StudentManagerBackEnd.Application.Student;
+using StudentManagerBackEnd.Application.Students;
 
 namespace StudentManagerBackEnd
 {
