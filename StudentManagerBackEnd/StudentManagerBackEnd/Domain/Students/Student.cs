@@ -43,9 +43,14 @@ namespace StudentManagerBackEnd.Domain.Students
 
         private void Initialize(List<string> listData)
         {
-            this.Type = listData[0];
+            this.Type = listData[0].ToLower();
             this.Name = listData[1];
-            this.Gender = listData[2];
+            if(listData[2].Equals("F")) {
+                this.Gender = Students.Gender.FEMALE;
+            } else {
+                this.Gender = Students.Gender.MALE;
+            }
+
             this.Birth = DateTime.ParseExact(
                 listData[3], 
                 "yyyyMMddHHmmss", 
