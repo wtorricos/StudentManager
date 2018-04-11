@@ -54,7 +54,7 @@ namespace StudentManagerBackEnd.DataAccess.InMemoryRepositories
                     }
                     else if (filteringField.Key == "name")
                     {
-                        result = result.Where(s => s.Name.Contains(filteringField.Value));
+                        result = result.Where(s => s.Name.ToLower().Contains(filteringField.Value.ToLower()));
                     }
                     else if (filteringField.Key == "gender")
                     {
