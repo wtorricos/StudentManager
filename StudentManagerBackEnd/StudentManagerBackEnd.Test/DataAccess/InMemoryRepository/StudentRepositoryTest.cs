@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using StudentManagerBackEnd.DataAccess;
 using StudentManagerBackEnd.DataAccess.InMemoryRepositories;
 using StudentManagerBackEnd.Domain.Students;
 using Xunit;
@@ -71,7 +72,7 @@ namespace StudentManagerBackEnd.Test.DataAccess.InMemoryRepository
             sut.Create(new Student { Name = "Pepe", Age = 12 });
             sut.Create(new Student { Name = "Maria", Age = 12 });
 
-            var result = sut.Get(page, size);
+            var result = sut.Get(new QueryParameters(page, size));
 
             Assert.Equal(expectedItems, result.Count());
             Assert.Equal(3, result.Total);
@@ -89,11 +90,83 @@ namespace StudentManagerBackEnd.Test.DataAccess.InMemoryRepository
             sut.Create(new Student { Name = "Pepe", Age = 12 });
             sut.Create(new Student { Name = "Maria", Age = 12 });
 
-            var result = sut.Get(page, size);
+            var result = sut.Get(new QueryParameters(page, size));
 
             Assert.Equal(expectedName, result.First().Name);
             Assert.Equal(3, result.Total);
             Assert.Equal(page, result.Page);
+        }
+
+        [Fact]
+        public void GetWithPaginationByNameSortedAlphabeticallyReturnsTheCorrectItems()
+        {
+            var sut = new StudentRepository();
+            sut.Create(new Student { Name = "JhonE", Age = 12 });
+            sut.Create(new Student { Name = "JhonC", Age = 12 });
+            sut.Create(new Student { Name = "JhonA", Age = 12 });
+            sut.Create(new Student { Name = "JhonB", Age = 12 });
+            sut.Create(new Student { Name = "JhonD", Age = 12 });
+
+            var result = sut.Get(new QueryParameters(1, 3, new List<string> { "name" }));
+
+            Assert.Equal(5, result.Total);
+            Assert.Equal(1, result.Page);
+            var actualArray = result.ToArray();
+            Assert.Equal("JhonA", actualArray[0].Name);
+            Assert.Equal("JhonB", actualArray[1].Name);
+            Assert.Equal("JhonC", actualArray[2].Name);
+        }
+
+        [Fact]
+        public void GetByStudentTypeSortedByDateReturnsTheCorrectResults()
+        {
+            var sut = new StudentRepository();
+            sut.Create(new Student { Name = "JhonE", Birth = new DateTime().AddMinutes(5), StudentType = StudentType.ELEMENTARY });
+            sut.Create(new Student { Name = "JhonC", Birth = new DateTime().AddMinutes(3), StudentType = StudentType.ELEMENTARY });
+            sut.Create(new Student { Name = "JhonA", Birth = new DateTime().AddMinutes(1), StudentType = StudentType.HIGH });
+            sut.Create(new Student { Name = "JhonB", Birth = new DateTime().AddMinutes(2), StudentType = StudentType.KINDER });
+            sut.Create(new Student { Name = "JhonD", Birth = new DateTime().AddMinutes(4) });
+
+            var result = sut.Get(new QueryParameters(
+                page: 1,
+                size: 3,
+                sortingFields: new List<string> { "birth" },
+                filteringFields: new List<KeyValuePair<String, String>> { new KeyValuePair<string, string>("studentType", StudentType.ELEMENTARY ) }));
+
+            var actualArray = result.ToArray();
+            Assert.Equal("JhonC", actualArray[0].Name);
+            Assert.Equal("JhonE", actualArray[1].Name);
+            Assert.Equal(2, result.Count());
+            Assert.Equal(2, result.Total);
+            Assert.Equal(1, result.Page);
+        }
+
+        [Fact]
+        public void GetByGenderAndTypeSortedByDateReturnsTheCorrectResults()
+        {
+            var sut = new StudentRepository();
+            sut.Create(new Student { Name = "JhonE", Gender = Gender.MALE, Birth = new DateTime().AddMinutes(5), StudentType = StudentType.ELEMENTARY });
+            sut.Create(new Student { Name = "MariaC", Gender = Gender.FEMALE, Birth = new DateTime().AddMinutes(3), StudentType = StudentType.ELEMENTARY });
+            sut.Create(new Student { Name = "MariaA", Gender = Gender.FEMALE, Birth = new DateTime().AddMinutes(1), StudentType = StudentType.HIGH });
+            sut.Create(new Student { Name = "MariaB", Gender = Gender.FEMALE, Birth = new DateTime().AddMinutes(2), StudentType = StudentType.ELEMENTARY });
+            sut.Create(new Student { Name = "JhonD", Gender = Gender.MALE, Birth = new DateTime().AddMinutes(4) });
+
+            var result = sut.Get(new QueryParameters(
+                page: 1,
+                size: 3,
+                sortingFields: new List<string> { "birth" },
+                filteringFields: new List<KeyValuePair<String, String>> 
+                { 
+                    new KeyValuePair<string, string>("studentType", StudentType.ELEMENTARY),
+                    new KeyValuePair<string, string>("gender", Gender.FEMALE)
+                }));
+
+            var actualArray = result.ToArray();
+            Assert.Equal("MariaB", actualArray[0].Name);
+            Assert.Equal("MariaC", actualArray[1].Name);
+            Assert.Equal(2, result.Count());
+            Assert.Equal(2, result.Total);
+            Assert.Equal(1, result.Page);
         }
     }
 }

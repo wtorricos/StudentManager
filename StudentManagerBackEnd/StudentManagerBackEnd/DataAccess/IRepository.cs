@@ -10,6 +10,7 @@ namespace StudentManagerBackEnd.DataAccess
 
         void Delete(Guid id);
 
-        PaginatedResult<T> Get(int page, int size);
+        //TODO: Implement a generic repository, consider supporting ODATA or other standard for queries
+        PaginatedResult<T> Get(QueryParameters queryParameters);
     }
 }
