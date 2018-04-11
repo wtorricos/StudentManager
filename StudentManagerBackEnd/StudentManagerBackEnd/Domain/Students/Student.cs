@@ -7,6 +7,6 @@ namespace StudentManagerBackEnd.Domain.Students
 
         public String Name { get; set; }
 
-        public String Age { get; set; }
+        public short Age { get; set; }
     }
 }
