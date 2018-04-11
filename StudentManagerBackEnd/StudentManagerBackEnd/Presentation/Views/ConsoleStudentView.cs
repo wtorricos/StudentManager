@@ -44,7 +44,7 @@ namespace StudentManagerBackEnd.Presentation.Views
             } 
             else if(filteringArguments.Any(fa => fa.Key == "type"))
             {
-                this.SelectSortingBy("birh");
+                this.SelectSortingBy("birth");
             }
 
             this.Search();

@@ -48,21 +48,21 @@ namespace StudentManagerBackEnd.DataAccess.InMemoryRepositories
             {
                 foreach (var filteringField in queryParameters.FilteringFields)
                 {
-                    if (filteringField.Key == "studentType")
+                    if (filteringField.Key == "type")
                     {
-                        result = result.Where(s => s.Type == filteringField.Value);
+                        result = result.Where(s => s.Type?.ToLower() == filteringField.Value?.ToLower());
                     }
                     else if (filteringField.Key == "name")
                     {
-                        result = result.Where(s => s.Name.ToLower().Contains(filteringField.Value.ToLower()));
+                        result = result.Where(s => s.Name.ToLower().Contains(filteringField.Value?.ToLower()));
                     }
                     else if (filteringField.Key == "gender")
                     {
-                        result = result.Where(s => s.Gender == filteringField.Value);
+                        result = result.Where(s => s.Gender?.ToLower() == filteringField.Value?.ToLower());
                     }
                     else
                     {
-                        throw new NotSupportedException("For the moment only filtering by gender or name is supported");
+                        throw new NotSupportedException("For the moment only filtering by gender, name and type is supported");
                     }
                 }
             }
@@ -77,7 +77,7 @@ namespace StudentManagerBackEnd.DataAccess.InMemoryRepositories
                 {
                     if (sortingField == "birth")
                     {
-                        result = result.OrderBy(student => student.Birth);
+                        result = result.OrderByDescending(student => student.Birth);
                     }
                     else if (sortingField == "name")
                     {

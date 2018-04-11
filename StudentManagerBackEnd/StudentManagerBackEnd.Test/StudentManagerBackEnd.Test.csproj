@@ -23,12 +23,16 @@
     <Folder Include="Application\Students\" />
     <Folder Include="Presentation\" />
     <Folder Include="Presentation\Views\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StudentManagerBackEnd\StudentManagerBackEnd.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="resources\SmallCSVSample.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\MediumCSVSample.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
