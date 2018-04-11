@@ -8,7 +8,7 @@ namespace StudentManagerBackEnd
     {
         static void Main(string[] args)
         {
-            StudentFacade studentFacade = new Bootstrap().StudentFacade;
+            Bootstrap app = new Bootstrap();
         }
     }
 }

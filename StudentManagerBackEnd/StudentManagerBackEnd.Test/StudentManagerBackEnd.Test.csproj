@@ -21,6 +21,8 @@
     <Folder Include="Domain\Students\" />
     <Folder Include="Application\" />
     <Folder Include="Application\Students\" />
+    <Folder Include="Presentation\" />
+    <Folder Include="Presentation\Views\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StudentManagerBackEnd\StudentManagerBackEnd.csproj" />
