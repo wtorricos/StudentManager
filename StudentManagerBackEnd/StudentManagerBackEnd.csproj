@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\" />
+    <Folder Include="Domain\" />
+    <Folder Include="DataAccess\" />
+    <Folder Include="Domain\Students\" />
+    <Folder Include="Application\Student\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Infrastructure.cs" />
+  </ItemGroup>
+</Project>
