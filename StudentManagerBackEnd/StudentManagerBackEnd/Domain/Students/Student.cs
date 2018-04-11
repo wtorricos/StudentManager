@@ -8,5 +8,11 @@ namespace StudentManagerBackEnd.Domain.Students
         public String Name { get; set; }
 
         public short Age { get; set; }
+
+        public bool Male { get; set; }
+
+        public String StudentType { get; set; }
+
+        public DateTime birth;
     }
 }
