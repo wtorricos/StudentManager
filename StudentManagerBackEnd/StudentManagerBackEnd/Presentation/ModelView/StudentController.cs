@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using StudentManagerBackEnd.Application.Students;
 using StudentManagerBackEnd.DataAccess;
 using StudentManagerBackEnd.Presentation.Views;
@@ -22,10 +23,16 @@ namespace StudentManagerBackEnd.Presentation.ModelView
             this.studentFacade.LoadData(path);
         }
 
-        public void Search(QueryParameters queryParameters) 
+        public async Task<int> Search(QueryParameters queryParameters) 
         {
-            var result = this.studentFacade.Search(queryParameters);
-            this.studentView.Students = result.ToList();
+            Task<int> task = Task.Run(() => 
+            {
+                var result = this.studentFacade.Search(queryParameters);
+                this.studentView.Students = result.ToList();
+                return this.studentView.Students.Count();
+            });
+
+            return await task;
         }
     }
 }

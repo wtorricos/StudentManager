@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using StudentManagerBackEnd.DataAccess;
 using StudentManagerBackEnd.Domain.Students;
 using StudentManagerBackEnd.Presentation.ModelView;
@@ -47,7 +48,7 @@ namespace StudentManagerBackEnd.Presentation.Views
                 this.SelectSortingBy("birth");
             }
 
-            this.Search();
+            var searchResult = this.Search().Result;
         }
 
         public void SelectFilter(KeyValuePair<string, string> keyValue)
@@ -60,7 +61,7 @@ namespace StudentManagerBackEnd.Presentation.Views
             this.sortingField = field;
         }
 
-        public void Search() 
+        public async Task<int> Search() 
         {
             //we are hardcoding some of the parameters as the console view won't offer a way to set them for the moment
             int defaultPage = 1;
@@ -71,7 +72,13 @@ namespace StudentManagerBackEnd.Presentation.Views
                 new List<string> { this.sortingField },
                 this.selectedFilters);
 
-            this.Controller.Search(query);
+            return await this.Controller.Search(query);
+        }
+
+        public void DisplayStudents() 
+        {
+            Console.WriteLine($"Results found ({ this.Students.Count().ToString() }):");
+            this.Students.ForEach(s => Console.WriteLine(s));    
         }
     }
 }
