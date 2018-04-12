@@ -37,6 +37,3 @@ Where each line has the format:
 Student Type, Student Name, Gender, Timestamp of last update in the system
 The “Timestamp” format is: “<year><month><day><hour><minute><second>”, e.g.:
 The representation for December 31st, 2013 14:59:34 is 20131231145934.
-
-#TODO
-  * Handle requests asynchronously.

@@ -26,6 +26,16 @@ namespace StudentManagerBackEnd.Domain.Students
 
         public DateTime Birth;
 
+        public override string ToString()
+        {
+            return string.Format(
+                "Name: {0}, Type: {1}, Gender: {2}, Birth: {3}",
+                this.Name,
+                this.Type,
+                this.Gender,
+                this.Birth);
+        } 
+
         private void ValidateData(List<string> listData)
         {
             if(listData.Count() != 4) 

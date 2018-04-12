@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using StudentManagerBackEnd.Domain.Students;
 
 namespace StudentManagerBackEnd.Presentation.Views
@@ -12,6 +13,6 @@ namespace StudentManagerBackEnd.Presentation.Views
 
         void SelectSortingBy(string field);
 
-        void Search();
+        Task<int> Search();
     }
 }

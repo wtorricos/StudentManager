@@ -8,7 +8,11 @@ namespace StudentManagerBackEnd
     {
         static void Main(string[] args)
         {
-            Bootstrap app = new Bootstrap();
+            var bootstrap = new Bootstrap();
+            var sut = bootstrap.StudentView;
+
+            sut.ProcessArgs(bootstrap.StudentController, args);
+            sut.DisplayStudents();
         }
     }
 }

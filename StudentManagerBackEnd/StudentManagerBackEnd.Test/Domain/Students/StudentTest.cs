@@ -93,5 +93,15 @@ namespace StudentManagerBackEnd.Test.Domain.Students
                 Assert.False(true, "invalid operation exception expected got" + e.Message);
             }
         }
+
+        [Fact]
+        public void ToStringReturnsTheStudentInfo() 
+        {
+            var student = new Student(new List<string>{ "Kinder", "Leia", "F", "20151231145934" });
+
+            var actual = student.ToString();
+
+            Assert.Equal("Name: Leia, Type: kinder, Gender: female, Birth: 12/31/2015 14:59:34", actual);
+        }
     }
 }
